@@ -35,7 +35,7 @@ function App() {
   useEffect(() => {
     alert("Hello Pokemon trainer!");
   }, []);
-
+  
   return (
     <div>
       <NavBar

@@ -1,4 +1,4 @@
-import PokemonCard from "./PokemonCard";
+import PokemonCard from './PokemonCard';
 
 interface Pokemon {
   name: string;
@@ -11,21 +11,23 @@ interface NavBarProps {
   pokemonList: Pokemon[];
 }
 
-const NavBar: React.FC<NavBarProps> = ({
-  pokemonIndex,
-  setPokemonIndex,
-  pokemonList,
-}) => {
+const NavBar: React.FC<NavBarProps> = ({ pokemonIndex, setPokemonIndex, pokemonList }) => {
+  const handlePokemonSelect = (index: number) => {
+    setPokemonIndex(index);
+    if (pokemonList[index].name === "pikachu") {
+      alert("pika pikachu !!!");
+    }
+  };
+
   return (
     <div>
       <PokemonCard pokemon={pokemonList[pokemonIndex]} />
 
-      {}
       {pokemonList.map((pokemon, index) => (
         <button
           key={pokemon.name}
           type="button"
-          onClick={() => setPokemonIndex(index)}
+          onClick={() => handlePokemonSelect(index)} 
         >
           {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)} {}
         </button>
