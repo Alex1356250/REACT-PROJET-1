@@ -1,28 +1,26 @@
 
-interface PokemonCardProps{
-    name: string;
-    imgSrc?: string;
-  }
+interface Pokemon {
+  name: string;
+  imgSrc?: string; 
+}
 
-  function PokemonCard({pokemon}) {
+interface PokemonCardProps {
+  pokemon: Pokemon;
+}
 
-    let imgAvailable = pokemon.imgSrc;
-
-    return (
-      imgAvailable ? (
-        <figure>
-          <img src={pokemon.imgSrc} alt={pokemon.name}/>
-          <figcaption>{pokemon.name}</figcaption>
-        </figure>
-      ) : (
-        <figure>
+function PokemonCard({ pokemon }: PokemonCardProps) {
+  return (
+    <div>
+      <figure className="pokemon-card">
+        {pokemon.imgSrc ? (
+          <img src={pokemon.imgSrc} alt={pokemon.name} />
+        ) : (
           <p>???</p>
-          <figcaption>{pokemon.name}</figcaption>
-        </figure>
-      )
-    );
-  }
- 
-  
-  export default PokemonCard;
-  
+        )}
+        <figcaption>{pokemon.name}</figcaption>
+      </figure>
+    </div>
+  );
+}
+
+export default PokemonCard;

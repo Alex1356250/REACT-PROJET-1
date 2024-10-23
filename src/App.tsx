@@ -1,9 +1,12 @@
 import "./App.css";
-import PokemonCard from "./components/PokemonCard.tsx";
+import NavBar from './components/NavBar';
 import { useState } from "react";
 
-const pokemonList = [
-  {
+function App() {
+  const [pokemonIndex, setPokemonIndex] = useState(0);
+
+  const pokemonList = [
+    {
       name: "bulbasaur",
       imgSrc:
         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
@@ -28,31 +31,15 @@ const pokemonList = [
     },
   ];
 
-
-
-function App() {
-  const [count, setCount] = useState(0);
-
-  const handleClickPlus = () => {
-    if (count < pokemonList.length -1) {
-    setCount(count + 1);
-    }
-  };
-  const handleClickMinus = () => {
-    if (count > 0) {
-    setCount(count - 1);
-    }
-  };
-
   return (
-    <section>
-      <PokemonCard pokemon={pokemonList[count]} />
-      <p>{count}</p>
-      <button type="button"onClick={handleClickMinus}>Précédent</button>
-      <button type="button"onClick={handleClickPlus}>Suivant</button>
-    </section>
+    <div>
+      <NavBar
+        pokemonIndex={pokemonIndex}
+        setPokemonIndex={setPokemonIndex}
+        pokemonList={pokemonList}
+      />
+    </div>
   );
 }
-
 
 export default App;
